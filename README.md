@@ -1,6 +1,6 @@
 # 2022_가상시착 산학협력
 ---
-** 코드는 현재 비공개로 작성 중입니다. **
+<b>* 코드는 현재 비공개로 작성 중입니다. </b>
 
 모델 이미지와 원하는 옷을 선택하면 옷을 시착해주는, 가상시착(virtual-tryon) 관련 프로젝트입니다. 본 프로젝트는 [Style-based global appearnce flow](https://github.com/SenHe/Flow-Style-VTON#style-based-global-appearance-flow-for-virtual-try-on-cvpr-2022)와 [HR-Viton](https://github.com/sangyun884/HR-VITON) 모델을 기반으로 진행되었고, `0) 모델 환경 구축 및 성능 test`, `1) 각 모델들의 Demo page를 위한 Data Pipeline 작성 및 time profiling & optimization`, `2) 하의 시착 및 최신 의상 시착을 위한 추가 데이터셋 크롤링 및 fine tuning`으로 프로젝트가 진행되었습니다. 
 
