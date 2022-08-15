@@ -20,7 +20,6 @@
 - <b>code</b>: `Style-based_global_appearance_flow`
 
 
----
 ### 2. High Rebvolution Vitrual Try-On(CVPR 2022)
 - <b>Dataset</b>: HR-VITON 자체 크롤링 데이터셋(1024*768)
 - <b>특징 및 로직 정리</b>: warping과 segmentation을 같은 stage에서 처리하고, 고해상도의 이미지를 사용하여 misalignment와 pixel squeezing artifacts를 최소화한 모델.
@@ -36,7 +35,7 @@
  
 * CIHP model을 knowledge distillation을 시키거나, 혹은 HR-VITON을 knowledge distillation을 시켜서 Input 자체를 줄이는 더 가벼운 모델을 만드는 것도 방법
 
----
+
 ### 3. 추가 자료
 - Layout generation: U-Net
 - Cloth-Warping: TPS(Cloth mask에 옷 이미지를 우겨넣는 방식이라 옷 프린팅 부분은 왜곡 존재)/Appearance-Flow(TPS보다 독립적인 와핑 가능. 프린팅 쏠림 현상 없음)
@@ -58,6 +57,7 @@
 - 착용방법에 따른(tuck-in, layering) 다른 이미지 생성
 - 고해상도 이미지 생성
 - 한계: 사용자의 신체적 특징 혹은 옷의 특징이 정확히 반영된 모델 시착 이미지는 현 단계에서 생성하기 어려움.
+
 * 코드는 현재 비공개로 작성 중입니다.
 
 
