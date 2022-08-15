@@ -1,5 +1,5 @@
 # 2022_가상시착 산학협력
----
+
 <b>* 코드는 현재 비공개로 작성 중입니다. </b>
 
 모델 이미지와 원하는 옷을 선택하면 옷을 시착해주는, 가상시착(virtual-tryon) 관련 프로젝트입니다. 본 프로젝트는 [Style-based global appearnce flow](https://github.com/SenHe/Flow-Style-VTON#style-based-global-appearance-flow-for-virtual-try-on-cvpr-2022)와 [HR-Viton](https://github.com/sangyun884/HR-VITON) 모델을 기반으로 진행되었고, `0) 모델 환경 구축 및 성능 test`, `1) 각 모델들의 Demo page를 위한 Data Pipeline 작성 및 time profiling & optimization`, `2) 하의 시착 및 최신 의상 시착을 위한 추가 데이터셋 크롤링 및 fine tuning`으로 프로젝트가 진행되었습니다. 
@@ -8,7 +8,7 @@
 
 `참여 기관` 성균관대학교 산학협력 codime
 
----
+
 ## 모델링
 ### 1. Style-based global appearance flow(CVPR 2022)
 - <b>Train process</b>
@@ -42,17 +42,17 @@
 - Cloth-Warping: TPS(Cloth mask에 옷 이미지를 우겨넣는 방식이라 옷 프린팅 부분은 왜곡 존재)/Appearance-Flow(TPS보다 독립적인 와핑 가능. 프린팅 쏠림 현상 없음)
 - Image Generation: U-Net/VITON-HD(spader기법을 저해상도 이미지를 점진적으로 고해상도 이미지로 생성.)
 
----
+
 ## 크롤링
 - SSF shopping mall에서 Input Dataset 형식에 맞게 하의 및 최신 의상 크롤링 진행
 
----
+
 ## 비즈니스적 측면 
 정확한 시착 이미지를 생성해내기 어렵다고 가정하였을 때...
 - 옷의 색감 조합 확인 가능
 - 스튜디오 촬영없이 모델샷 생성 가능(+ 옷만 찍으면 정해진 모델 위에 옷을 입혀줌으로써, 대형 오프라인 아울렛의 온라인 쇼핑몰 전환에 도움이 되는 측면 존재)
 
----
+
 ## 동향 및 한계점
 - 상.하의 동시착용
 - 착용방법에 따른(tuck-in, layering) 다른 이미지 생성
