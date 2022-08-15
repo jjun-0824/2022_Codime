@@ -9,13 +9,13 @@
 ---
 ## 모델링
 ### 1. Style-based global appearance flow(CVPR 2022)
-- Train process
+- <b>Train process</b>
 1) Semantic representation(segmentation map, keypoint pose, dense pose)과 model image, paired garments를 input으로 두어 parser-based 모델을 우선 학습 
-2) Parser-free 모델을 knowledge distillation을 기반으로 하여 학습을 진행. 자세히 말해보자면, model image에 unpaired된 garments를 pretrained된 parser-based를 통해 입히고, 해당 이미지( $I_{unpaired}$)와 paired garments를 input으로 받고 parser-free model을 통해 입힌 다음 원본 이미지( $I_{original}$)와 생성된 이미지( $I_{paired}$)간의 loss 값을 기반으로 parser-free model을 학습을 진행한다는 dmlal.
-- Dataset: VITON(256*912)
-- 특징: parser-based 모델을 기반으로 parser 없이 옷과 모델 이미지로만 학습이 가능하다는 점. knowledge distillation 기반으로 학습이 진행됨.
-- 보완점 및 결론: 
-- github 및 라이센스:
+2) Parser-free 모델을 knowledge distillation을 기반으로 하여 학습을 진행. 자세히 말해보자면, model image에 unpaired된 garments를 pretrained된 parser-based를 통해 입히고, 해당 이미지( $I_{unpaired}$ )와 paired garments를 input으로 받고 parser-free model을 통해 입힌 다음 원본 이미지( $I_{original}$ )와 생성된 이미지( $I_{paired}$ )간의 loss 값을 기반으로 parser-free model을 학습을 진행한다는 dmlal.
+- <b>Dataset</b>: VITON(256*912)
+- <b>특징</b>: parser-based 모델을 기반으로 parser 없이 옷과 모델 이미지로만 학습이 가능하다는 점. knowledge distillation 기반으로 학습이 진행됨.
+- <b>보완점 및 결론</b>: 기존 코드엣 30개중 1개꼴로 시착이 잘 되었고, 생성 이미지의 해상도가 낮은 편.
+- <b>github 및 라이센스</b>: [Style-based global appearnce flow](https://github.com/SenHe/Flow-Style-VTON#style-based-global-appearance-flow-for-virtual-try-on-cvpr-2022)
 
 
 ---
