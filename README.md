@@ -26,7 +26,7 @@
 - <b>특징 및 로직 정리</b>: warping과 segmentation을 같은 stage에서 처리하고, 고해상도의 이미지를 사용하여 misalignment와 pixel squeezing artifacts를 최소화한 모델.
 - <b>보완점 및 결론</b>: CIHP-PGN이 느린 관계로 
 - <b>Data Pipeline</b>: Demo page에서 새로운 사용자의 이미지와 새로운 옷을 입력받아도 곧바로 시착이 가능하도록 하는 pipeline 작성 
-
+![슬라이드8](https://user-images.githubusercontent.com/67568001/184663263-61bbe886-edab-473b-b197-2f8477c9a3bb.JPG)
   1) CIHP-PGN: 
   2) OpenPose: 
   3) DensePose: 
