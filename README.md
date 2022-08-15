@@ -27,9 +27,9 @@
 - <b>보완 사항</b>: human-parsing 모델인 CIHP-PGN의 test 속도가 상당부분을 차지. 다른 human-parsing 모델인 SCHP, QANet 시도 중. 
 - <b>Data Pipeline</b>: Demo page에서 새로운 사용자의 이미지와 새로운 옷을 입력받아도 곧바로 시착이 가능하도록 하는 pipeline 작성 
 ![슬라이드8](https://user-images.githubusercontent.com/67568001/184663263-61bbe886-edab-473b-b197-2f8477c9a3bb.JPG)
-  1) CIHP-PGN: 옷과 모델의 parsing 이미지를 생성 [Link]()
-  2) OpenPose: 모델의 keypoints를 생성 [Link]()
-  3) DensePose: 모델의 densepose 이미지 생성 [Link]()
+  1) CIHP-PGN: 옷과 모델의 parsing 이미지를 생성 [Link](https://github.com/Engineering-Course/CIHP_PGN)
+  2) OpenPose: 모델의 keypoints를 생성 [Link](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
+  3) DensePose: 모델의 densepose 이미지 생성 [Link](https://github.com/facebookresearch/detectron2)
   4) agnostic: HR_VITON 코드에서 `get_agnostic` 함수 변형하여 자체 agnostic 함수 생성.
 - <b>github 및 라이센스</b>: [HR_VITON](https://github.com/sangyun884/HR-VITON)
 - <b>code</b>: `HR_VITON`
@@ -38,11 +38,26 @@
 
 ---
 ### 3. 추가 자료
-- ㄹ
-- 
+- Layout generation: U-Net
+- Cloth-Warping: TPS(Cloth mask에 옷 이미지를 우겨넣는 방식이라 옷 프린팅 부분은 왜곡 존재)/Appearance-Flow(TPS보다 독립적인 와핑 가능. 프린팅 쏠림 현상 없음)
+- Image Generation: U-Net/VITON-HD(spader기법을 저해상도 이미지를 점진적으로 고해상도 이미지로 생성.)
 
 ---
-### 크롤링
+## 크롤링
 - SSF shopping mall에서 Input Dataset 형식에 맞게 하의 및 최신 의상 크롤링 진행
- 
+
+---
+## 비즈니스적 측면 
+정확한 시착 이미지를 생성해내기 어렵다고 가정하였을 때...
+- 옷의 색감 조합 확인 가능
+- 스튜디오 촬영없이 모델샷 생성 가능(+ 옷만 찍으면 정해진 모델 위에 옷을 입혀줌으로써, 대형 오프라인 아울렛의 온라인 쇼핑몰 전환에 도움이 되는 측면 존재)
+
+---
+## 동향 및 한계점
+- 상.하의 동시착용
+- 착용방법에 따른(tuck-in, layering) 다른 이미지 생성
+- 고해상도 이미지 생성
+- 한계: 사용자의 신체적 특징 혹은 옷의 특징이 정확히 반영된 모델 시착 이미지는 현 단계에서 생성하기 어려움.
+* 코드는 현재 비공개로 작성 중입니다.
+
 
