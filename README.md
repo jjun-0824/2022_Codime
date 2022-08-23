@@ -60,9 +60,7 @@
 - `특징 및 로직 정리` warping과 segmentation을 같은 stage에서 처리하고, 고해상도의 이미지를 사용하여 misalignment와 pixel squeezing artifacts를 최소화한 모델입니다.
 
 - `보완 사항` human-parsing 모델인 CIHP-PGN의 test 속도가 상당 부분을 차지합니다. 대체 human-parsing 모델인 SCHP, QANet 시도하였고, 그 결과는 하단에 참고하도록 하겠습니다.
-- `기타` model pipeline 시간 profiling 및 optimization
-- 
-상용화를 위해서는 모델을 cpu로 돌려야하지만, 시착 시간이 기하급수적으로 늘어나는 이유로 우선은 gpu로 시착을 진행하기로 하였고, 시간을 프로파일링한 결과 다음과 같은 결과가 나왔습니다. 시간을 단축하기 위해 test 시간이 비교적 짧은 schp등과 같은 human-parsing 대체모델을 사용하거나, 모델 로드 방식을 global하게 바꾸는 등의 작업을 진행하였습니다. 모델을 가볍게 만들기 위해 CIHP model을 knowledge distillation을 시키거나, 혹은 HR-VITON을 knowledge distillation을 시켜서 Input 자체를 줄이는 더 가벼운 모델을 만드는 것도 방법입니다. 모델의 성능을 높이기 위해서, 특히 그중에서도 옷의 일그러짐 현상을 해소하기 위해서 tps로 warping하는 방식을 appearnace-flow 방식으로 수정하는 대안도 존재합니다. 
+- `model pipeline 시간 profiling 및 optimization` 상용화를 위해서는 모델을 cpu로 돌려야하지만, 시착 시간이 기하급수적으로 늘어나는 이유로 우선은 gpu로 시착을 진행하기로 하였고, 시간을 프로파일링한 결과 다음과 같은 결과가 나왔습니다. 시간을 단축하기 위해 test 시간이 비교적 짧은 schp등과 같은 human-parsing 대체모델을 사용하거나, 모델 로드 방식을 global하게 바꾸는 등의 작업을 진행하였습니다. 모델을 가볍게 만들기 위해 CIHP model을 knowledge distillation을 시키거나, 혹은 HR-VITON을 knowledge distillation을 시켜서 Input 자체를 줄이는 더 가벼운 모델을 만드는 것도 방법입니다. 모델의 성능을 높이기 위해서, 특히 그중에서도 옷의 일그러짐 현상을 해소하기 위해서 tps로 warping하는 방식을 appearnace-flow 방식으로 수정하는 대안도 존재합니다. 
 
 - `virtual try-on의 성능평가지표` LPIPS, SSIM, FID 등이 존재합니다. 성능 평가 결과는 SSIM - 0.882, LPIPS - 0.0695 입니다.
 
@@ -73,17 +71,21 @@
 ![슬라이드8](https://user-images.githubusercontent.com/67568001/184663263-61bbe886-edab-473b-b197-2f8477c9a3bb.JPG)
 
 (1) segmentation: test_image_pgn.py, u2net_demo.py(remove_bg_by_file)
+
 `CIHP-PGN` 옷과 모델의 parsing 이미지를 생성 [Link](https://github.com/Engineering-Course/CIHP_PGN)
 위에서 언급했듯 CIHP-PGN 모델은 시착 시간이 오래 걸리기 때문에 상용화하기 어렵습니다. 이에 대한 대체 모델로 SCHP와 QANet이라는 모델을 사용하기로 하였습니다. 다만 QANet은 코드 오류로 실행시키지 못하였고, SCHP는 모델 실행속도가 80초에서 10초가량으로 줄어든 바에 비해 성능은 이전 CIHP-PGN 모델보다 좋지 못한 결과를 보여줍니다. 다만 더 많은 데이터로 학습을 진행하거나 모델의 구조를 일부 변경함으로써 더 좋은 성능을 보여주도록 수정 중에 있습니다. SCHP를 HR-VITON 학습에 적용시키기 위해 segmentation의 label의 정보가 CIHP_PGN과 동일한지 확인하는 과정을 거치고, put_palatte 함수도 일부 수정하여 보여지는 색깔도 동일하게 수정하였습니다.
 
 (2) Keypoints openpose.pose_keypoints.py
+
 `OpenPose` 모델의 keypoints를 생성 [Link](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
 
 
 (3) Denspose: apply_net_edit.py
+
 `DensePose` 모델의 densepose 이미지 생성 [Link](https://github.com/facebookresearch/detectron2)
 
 (4) Agnostic: test_agnostic.py, ag_dataset_demo.py
+
 `agnostic` HR_VITON 코드에서 get_agnostic 함수 변형하여 자체 agnostic 함수 생성.
 
 
